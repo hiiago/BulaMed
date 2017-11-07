@@ -1,0 +1,173 @@
+body{
+	background-color: #fff;
+	height: 400px;
+}
+header#index{
+	margin-top: 120px;
+	margin-bottom: 100px;
+}
+
+
+footer#index-footer{
+	position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.container{
+	width: 970px; margin: 0 auto;
+}
+
+#search-input {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.search-query {
+  border: 2px solid #00BFFF;
+}
+
+.fa-search{
+  color: #fff;
+}
+.btn-search {
+  background-color: #00BFFF;
+
+}
+.titulo-iniciais{color: #00BFFF; font-size: 70pt}
+#index .text-center{color: #808080;}
+#index h1{font-size: 50pt;}
+#resultado .titulo-iniciais{color: #00BFFF; font-size: 25pt}
+#resultado .text-center{color: #808080;}
+#resultado h1{font-size: 20pt;}
+
+/*Página de Busca*/
+
+body#body-resultado{
+	background-color: #f2f2f2;
+}
+
+footer#resultado-footer{
+	margin: 20px 0;
+    bottom:0;
+    width:100%;
+}
+
+header#resultado {
+	margin-top: 10px;
+	margin-bottom: 100px;
+	background-color: #fff;
+	box-shadow: 0px 10px 16px 0px rgba(0,0,0,0.25);
+}
+
+#box{
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+} 
+
+article{
+	margin-bottom: 30px;
+    padding: 15px 20px 0;
+    /*
+    border-top-width: 5px;
+    border-color: #00BFFF;
+    border-top-style: solid;
+    */
+    background: #fff;
+}
+
+#titulo-box{
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+#titulo-box h1{
+	color: #333
+}
+
+#titulo-box h3{
+	font-size: 12pt;
+    font-style: italic;
+    margin: 0 0 20px;
+    color: #a7a7a7;
+}
+
+#box p{
+	font-size: 14pt;
+    margin: 10px 0;
+    color: #474747;
+}
+
+.titulo{
+	width: 100%;
+	background: #00AED9;
+	padding: 10px 0;
+	margin-top: 50px;
+}
+
+.first{
+	margin-top: 0;
+}
+
+.titulo h4{
+	color: #fff;
+}
+
+/* Carroussel */
+
+.item{
+	width: 200px;
+	margin: 0 auto 20px;
+	height: 260px;
+	text-align: center;
+}
+
+.item a{
+	text-decoration: none;
+}
+
+.item img{
+	
+	height: 135px;
+	border: 0;
+    vertical-align: top;
+}
+
+.item p{
+	height: 70px; 
+	width: 100%;
+	font-size: 12pt;
+    line-height: 100%;
+    text-align: center;
+    color: #566a70;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.item span{
+	font-size: 15pt;
+    line-height: normal;
+    color: red;
+}
+
+.owl-next{
+	position: absolute;
+    top: 120px;
+    right: 0;
+    width: 32px;
+    height: 62px;
+    background: url(img/next.png) no-repeat;
+    transition: all 300ms line
+}
+
+.owl-prev{
+	position: absolute;
+    top: 120px;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    background: url(img/back.png) no-repeat;
+    transition: all 300ms line
+}
