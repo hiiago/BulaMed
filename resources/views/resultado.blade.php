@@ -5,7 +5,7 @@
 	<title>BulaMed</title>
 
 	<link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
 
@@ -20,6 +20,8 @@
 <header id="resultado">
 	
 		<div class="container">
+			<div class="text-center" id='loading'></div>
+
 			<div class="row">
 				
 				<div id="logo" class="col-sm-6">
@@ -28,12 +30,12 @@
 
 				<div id="search-input" class="col-sm-6">
 				{!! Form::open(['action' => 'IntegracaoController@index', 'method' => 'get']) !!}
-					    <div class="input-group col-sm-12">
-					      <input type="text" class="search-query form-control" placeholder="Pesquisar	..." aria-label="Search for...">
-					      <span class="input-group-btn">
-					        <button class="btn btn-search" type="button"><span class="fa fa-search"></span></button>
-					      </span>
-					    </div>
+		   			<div class="input-group col-sm-12">
+				      <input type="text" name="bula" class="search-query form-control" placeholder="Pesquisar	..." aria-label="Search for..." required>
+				      <span class="input-group-btn">
+				        <button class="btn btn-search" type="submit"><span class="fa fa-search"></span></button>
+				      </span>
+				    </div>
 				{!! Form::close() !!}
 				</div>
 			</div>
@@ -52,66 +54,42 @@
 			
 			<div class="row">
 				<div id="titulo-box" class="col-sm-12">
-					<h1>Dorflex</h1>
-				
-					<h3>Princípios ativos: Dipirona Sódica Monoidratada, Citrato De Orfenadrina, Cafeína.</h3>
+					<h1>{{$bula}}</h1>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="titulo first">
-					<h4> » Para que serve?</h4>
-				</div>
+			@foreach($bulario as $elemento)
+				<div class="row">
+					<div class="titulo">
+						<?php echo $elemento[0]?>
+						
+					</div>
 				
-				<div class="col-sm-12">
-					
-					<p>
-						Buscopan drágeas ou gotas é indicado para o alivio de dores, cólicas e desconforto abdominal, no tratamento de contrações e cólicas do estômago, do intestino, das vias biliares, urinárias e do aparelho genital feminino, em crianças e adultos.
-
-						Buscopan, também pode ser encontrado na forma de Buscopan Composto, para um alivio mais rápido da dor.
-					</p>
+				@for($i=1; $i < $elemento->count(); $i++)
+					<div class="col-sm-12">
+						<?php echo $elemento[$i]?>
+					</div>
+				@endfor
 
 				</div>
-
-			</div>
+			@endforeach
+			
 
 			<div class="row">
 				<div class="titulo">
-					<h4> » Como funciona?</h4>
-				</div>
-				
-				<div class="col-sm-12">
+					<?php echo $consultaremedios[0]?>
 					
-					<p>
-						Buscopan é um medicamento que tem na sua composição Butilbrometo de escopolamina, um composto com ação antiespasmódica e analgésica, responsável por aliviar rapidamente dores, cólicas e desconforto abdominal.
-					</p>
-
-					<p>
-						Apos administração, Buscopan começa a funcionar sobre o aparelho digestivo cerca de 20 a 80 minutos, após administração.
-					</p>
-
 				</div>
+			
+			@for($i=1; $i < $consultaremedios->count(); $i++)
+				<div class="col-sm-12">
+					<?php echo $consultaremedios[$i]?>
+				</div>
+			@endfor
 
 			</div>
+			
 
-			<div class="row">
-				<div class="titulo">
-					<h4> » O que fazer se alguém usar uma quantidade maior do que a indicada??</h4>
-				</div>
-				
-				<div class="col-sm-12">
-					
-					<p>
-						Em caso de ingestão acidental de paracetamol, é indicado procurar assistência médica imediatamente ou um centro de desintoxicação.
-					</p>
-
-					<p>
-						É essencial que seja dado suporte imediato para adultos e crianças, mesmo que não houver sinais e sintomas de intoxicação.
-					</p>
-
-				</div>
-
-			</div>
 
 
 		</article>
@@ -121,38 +99,16 @@
 		</div>
 
 		<div class="owl-carousel">
-		  <div class="item">
-		  	<a href="#">
-			  	<img src="img/remedio.jpg">
-			  	<p>Dorflex c/ 36 Comprimidos</p>
-			  	<span>R$ 13,56</span>
-		  	</a>
-		  </div>
 
-		  <div class="item">
-		  	<a href="#">
-			  	<img src="img/remedio.jpg">
-			  	<p>Dorflex c/ 36 Comprimidos</p>
-			  	<span>R$ 13,56</span>
-		  	</a>
-		  </div>
-
-		  <div class="item">
-		  	<a href="#">
-			  	<img src="img/remedio.jpg">
-			  	<p>Dorflex c/ 36 Comprimidos Comprimidos dsadsadasdasdasdasdasdaasadasdasdasdComprimidos Comprimidos Comprimidos Comprimidos Comprimidos Comprimidos</p>
-			  	<span>R$ 13,56</span>
-		  	</a>
-		  </div>
-
-		  <div class="item">
-		  	<a href="#">
-			  	<img src="img/remedio.jpg">
-			  	<p>Dorflex c/ 36 Comprimidos</p>
-			  	<span>R$ 13,56</span>
-		  	</a>
-		  </div>
-
+			@foreach($farmadelivery as $produto)
+				<div class="item">
+				  	<a href="{{$produto->get('link')}}">
+					  	<img src="{{$produto->get('imagem')}}">
+					  	<p>{{$produto->get('nome')}}</p>
+					  	<span>{{$produto->get('preco')}}</span>
+				  	</a>
+				 </div>
+			@endforeach
 		 
 		</div>
 		
@@ -181,5 +137,10 @@
     	autoplayTimeout:5000,
     	navText: ""
 	  });
+
+	  $("form").submit(function() {
+				
+		    $('#loading').html('<img src="http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif"/>');
+			});
 });
 </script>

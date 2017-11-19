@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/integracao', 'IntegracaoController@index');
+
+Route::get('/error', function () {
+    return view('error');
+});
